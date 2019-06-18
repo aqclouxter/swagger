@@ -3,7 +3,7 @@
   "info" : {
     "description" : "This is the API for DRUO version 9",
     "version" : "1.0.9",
-    "title" : "DRUO API",
+    "title" : "DRUO APIS",
     "contact" : {
       "email" : "alejandro.quintero@clouxter.com"
     },
