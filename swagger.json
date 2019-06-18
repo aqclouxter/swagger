@@ -1,0 +1,512 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "description" : "This is the API for DRUO version 9",
+    "version" : "1.0.9",
+    "title" : "DRUO APIS",
+    "contact" : {
+      "email" : "alejandro.quintero@clouxter.com"
+    },
+    "license" : {
+      "name" : "DRUO 1.0",
+      "url" : "http://www.druo.com"
+    }
+  },
+  "tags" : [ {
+    "name" : "DRUO",
+    "description" : "ed Admin-only calls"
+  } ],
+  "paths" : {
+    "/users" : {
+      "put" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Update an User in the Druo system",
+        "requestBody" : {
+          "description" : "User info",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "405" : {
+            "description" : "Method not allowed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "User Not Blocked",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "412" : {
+            "description" : "Pre condition Failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "Not implemented",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "Service Unavailable",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Enum" : {
+        "type" : "object",
+        "required" : [ "name", "enumActive", "dateCreated", "dateCreatedGmt" ],
+        "properties" : {
+          "enumId" : {
+            "type" : "string",
+            "description" : "The identifier of the Enum in the system generated automatically from the database",
+            "example" : "3MYCJG5GVYQ8Q"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Parent enum name",
+            "example" : "BussinessCapabilities"
+          },
+          "attribute" : {
+            "type" : "string",
+            "description" : "The specific attribute to reference within the parent enum.",
+            "example" : "ACCESS"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "Description",
+            "example" : "A fully operational Business. The Business can use all DRUO products and APIs."
+          },
+          "additionalValues" : {
+            "type" : "array",
+            "items" : {
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/EnumAdditionalValues"
+              } ]
+            },
+            "description" : "Array of values if the Enum Atribut requires it."
+          },
+          "enumActive" : {
+            "type" : "boolean",
+            "description" : "If true, the Enum will be shown as enabled in the system.",
+            "example" : true
+          },
+          "createdBy" : {
+            "type" : "string",
+            "description" : "ID of the DRUO Admin User that created the Enum.",
+            "example" : "LHDFOS8E932"
+          },
+          "modifiedBy" : {
+            "type" : "string",
+            "description" : "ID of the DRUO Admin User that modified the Enum.",
+            "example" : "HADSHU34555"
+          },
+          "dateCreated" : {
+            "type" : "string",
+            "format" : "date-time",
+            "description" : "The date the Enum was created, in the Location’s timezone. READ-ONLY",
+            "example" : "2018-11-15T23:23:38"
+          },
+          "dateCreatedGmt" : {
+            "type" : "string",
+            "format" : "date-time",
+            "description" : "The date the Enum was created, as GMT. READ-ONLY",
+            "example" : "2018-11-15T23:23:38"
+          },
+          "dateModified" : {
+            "type" : "string",
+            "format" : "date-time",
+            "description" : "The date the Enum was last modified, in the Location’s timezone. READ-ONLY",
+            "example" : "2018-11-15T23:23:38"
+          },
+          "dateModifiedGmt" : {
+            "type" : "string",
+            "format" : "date-time",
+            "description" : "The date the Enum was last modified, as GMT. READ-ONLY",
+            "example" : "2018-11-15T23:23:38"
+          }
+        }
+      },
+      "EnumAdditionalValues" : {
+        "properties" : {
+          "value" : {
+            "type" : "string",
+            "description" : "The data  of the atribute value."
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "The description of atribute value."
+          }
+        },
+        "type" : "object"
+      },
+      "Users" : {
+        "required" : [ "creationSource", "dateCreated", "dateCreatedGmt", "dateModified", "dateModifiedGmt", "status", "userId" ],
+        "type" : "object",
+        "properties" : {
+          "userId" : {
+            "type" : "string",
+            "description" : "The identifier of the Business within the DRUO system.",
+            "example" : "DSF97SDF8D"
+          },
+          "authId" : {
+            "type" : "string",
+            "description" : "The user's ID in a third-party authentication system.",
+            "example" : "usr_5457edea1b8f33391a000004"
+          },
+          "authProvider" : {
+            "$ref" : "#/components/schemas/UserAuthProvider"
+          },
+          "email" : {
+            "type" : "string",
+            "description" : "The user's email address.",
+            "example" : "john.smith@druo.com"
+          },
+          "phoneNumber" : {
+            "type" : "string",
+            "description" : "The user's phone number.",
+            "example" : "573003002000"
+          },
+          "password" : {
+            "type" : "string",
+            "description" : "The user's password.",
+            "example" : "ABC123"
+          },
+          "status" : {
+            "$ref" : "#/components/schemas/UserStatus"
+          },
+          "businessOwner" : {
+            "type" : "array",
+            "description" : "IDs of the Business that this User is owner of.",
+            "example" : "FHDFP9YSDF0",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "businessEmployee" : {
+            "type" : "array",
+            "description" : "IDs of the Business that this User is an employee of.",
+            "example" : "FJ23F39P23032",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "druoAdmin" : {
+            "type" : "string",
+            "description" : "Admin ID of the DRUO Admin.",
+            "example" : "CNO8F39FNO83"
+          },
+          "personalAccount" : {
+            "type" : "string",
+            "description" : "IDs of the personal account that this User is owner of."
+          },
+          "emailVerified" : {
+            "type" : "boolean",
+            "description" : "boolean (optional)true if the user's email is verified, false otherwise. If it is true then the user will not receive a verification email, unless verify_email true was specified"
+          },
+          "verifyEmail" : {
+            "type" : "boolean",
+            "description" : "boolean (optional)If true, the user will receive a verification email after creation, even if created with email_verified set to true. If false, the user will not receive a verification email, even if created with email_verified set to false. If unspecified, defaults to the behavior determined by the value of email_verified."
+          },
+          "phoneVerified" : {
+            "type" : "boolean",
+            "description" : "boolean (optional)true if the user's phone number is verified, false otherwise. When the user is added to a SMS connection, they will not receive an verification SMS if this is true."
+          },
+          "verifyPhone" : {
+            "type" : "boolean",
+            "description" : "waiting for DESCRIPTION"
+          },
+          "kycLevel" : {
+            "type" : "string",
+            "description" : "kyc level"
+          },
+          "druoScore" : {
+            "type" : "string",
+            "description" : "Current DRUO Score for the User.",
+            "example" : 55
+          },
+          "creationSource" : {
+            "$ref" : "#/components/schemas/UserCreationSource"
+          },
+          "dateCreated" : {
+            "type" : "string",
+            "description" : "The date the order was created, in the site’s timezone. READ-ONLY",
+            "format" : "date-time",
+            "example" : "2018-11-15T23:23:38"
+          },
+          "dateCreatedGmt" : {
+            "type" : "string",
+            "description" : "The date the order was created, as GMT. READ-ONLY",
+            "format" : "date-time",
+            "example" : "2018-11-15T23:23:38"
+          },
+          "dateModified" : {
+            "type" : "string",
+            "description" : "The date the order was last modified, in the site’s timezone. READ-ONLY",
+            "format" : "date-time",
+            "example" : "2018-11-15T23:23:38"
+          },
+          "dateModifiedGmt" : {
+            "type" : "string",
+            "description" : "The date the order was last modified, as GMT. READ-ONLY",
+            "format" : "date-time",
+            "example" : "2018-11-15T23:23:38"
+          },
+          "modifiedBy" : {
+            "type" : "string",
+            "example" : "ABC"
+          }
+        }
+      },
+      "UserAuthProvider" : {
+        "type" : "string",
+        "description" : "AUTH0 - ID  1 -  Auth0 service.",
+        "enum" : [ "AUTH0" ]
+      },
+      "UserCreationSource" : {
+        "type" : "string",
+        "description" : "Represents the method used to create the user profile. \n  * API  - ID 1 -  User created via private DRUO API call. \n  * POS  - ID 2 -  User created via Point of Sale app. \n  * DASHBOARD  - ID 3 -  User created via Dashboard. \n  * IMPORT  - ID 4 -  User profile created automatically when importing User data through Admin Panel.\n  * ADMIN_PANEL  - ID 5  - User profile manually created via DRUO's Admin Panel. \n  * INCOMING_PAYMENT  - ID 6 -  User profile created automatically for an incoming payment. \n  * DELETION_RECOVERY  - ID 7 -  User profile restored through DRUO's deletion recovery process.\n  * THIRD_PARTY  - ID 8  - User profile created by a third party through a DRUO API call.\n  * THIRD_PARTY_IMPORT - ID 9 -  User profile created by a third-party product and imported through an official integration.\n  * MERGE  - ID 10 -  User profile created as the result of explicitly merging multiple User profiles through the Dashboard or Point of Sale application.\n  * UNMERGE_RECOVERY  - ID 11 -  User profile restored through DRUO's unmerge recovery process.\n",
+        "example" : "API",
+        "enum" : [ "API", "POS", "DASHBOARD", "IMPORT", "ADMIN_PANEL", "INCOMING_PAYMENT", "DELETION_RECOVERY", "THIRD_PARTY", "THIRD_PARTY_IMPORT", "MERGE", "UNMERGE_RECOVERY" ]
+      },
+      "UserStatus" : {
+        "type" : "string",
+        "description" : "The User's status. \n  * INVITED  - ID 1  - User has been invited to sign up.  \n  * WAITING_FOR_REVIEW  - ID 2  - A user registered for an account and is waiting for an agent to start the review process. Business may process payments unless user is Owner.  \n  * IN_REVIEW  - ID 3  - An agent is actively reviewing the Business. Business cannot process payments.  \n  * ACTIVE  - ID 4  - A fully operational Business. The Business can use all Square products and APIs. \n  * BLOCKED - ID 5 - The user has been blocked from an excessive amount of incorrectly provided credentials.\n  * INACTIVE  - ID 6 - The Business has not used the account or logged into the platform in the last 6 months. Business can process payments.  \n  * DEACTIVATED  - ID 7  - User-requested deactivation. Data is kept.  \n  * SUSPENDED  - ID 8  - The Business has been temporarily denied service and cannot operate, including logging in and processing payments. Data is kept.  \n  * TERMINATED  - ID 9  - The User has been permanently terminated and cannot operate, including logging in and processing payments. Data is kept.  \n  * DELETED  - ID 10  - Customer has requested data deletion. Personally-identifiable information (name and pictures) have been deleted. The rest of the data is kept.\n",
+        "enum" : [ "INVITED", "WAITING_FOR_REVIEW", "IN_REVIEW", "ACTIVE", "BLOCKED", "INACTIVE", "DEACTIVATED", "SUSPENDED", "TERMINATED", "DELETED" ],
+        "example" : "ACTIVE"
+      },
+      "requestbodyUser" : {
+        "required" : [ "email", "creationSource", "password" ],
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string"
+          },
+          "phoneNumber" : {
+            "type" : "string"
+          },
+          "password" : {
+            "type" : "string"
+          },
+          "creationSource" : {
+            "type" : "string"
+          }
+        }
+      },
+      "requestbodyAuthUser" : {
+        "required" : [ "email", "password", "user_id" ],
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string"
+          },
+          "password" : {
+            "type" : "string"
+          },
+          "user_id" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ErrorCode" : {
+        "type" : "object",
+        "required" : [ "timestamp", "status", "response", "code", "message", "path", "method" ],
+        "properties" : {
+          "timestamp" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "status" : {
+            "type" : "integer"
+          },
+          "response" : {
+            "type" : "string"
+          },
+          "code" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "path" : {
+            "type" : "string"
+          },
+          "method" : {
+            "type" : "string"
+          }
+        }
+      },
+      "requestBodyEnum" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "attribute" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "additionalValues" : {
+            "type" : "array",
+            "items" : {
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/EnumAdditionalValues"
+              } ]
+            }
+          },
+          "created_by" : {
+            "type" : "string"
+          }
+        }
+      },
+      "requestBodyUpdateEnum" : {
+        "type" : "object",
+        "required" : [ "modifiedBy" ],
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "Parent enum name"
+          },
+          "attribute" : {
+            "type" : "string",
+            "description" : "The specific attribute to reference within the parent enum."
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "Description"
+          },
+          "additionalValues" : {
+            "type" : "array",
+            "items" : {
+              "allOf" : [ {
+                "$ref" : "#/components/schemas/EnumAdditionalValues"
+              } ]
+            },
+            "description" : "Array of values if num Atribut requires it."
+          },
+          "enumActive" : {
+            "type" : "boolean",
+            "description" : "If true, the Enum will be shown as enabled in the system."
+          },
+          "modifiedBy" : {
+            "type" : "string",
+            "description" : "ID of the DRUO Admin User that modified the Enum."
+          }
+        }
+      },
+      "requestBodyBlockUser" : {
+        "type" : "object",
+        "properties" : {
+          "userId" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          }
+        }
+      },
+      "requestBodyUEP" : {
+        "type" : "object",
+        "properties" : {
+          "userId" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "password" : {
+            "type" : "string"
+          }
+        }
+      },
+      "requestBodyUE" : {
+        "type" : "object",
+        "properties" : {
+          "userId" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
