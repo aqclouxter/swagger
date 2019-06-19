@@ -1,23 +1,1150 @@
 {
-  "openapi" : "3.0.0",
+  "swagger" : "2.0",
   "info" : {
-    "description" : "This is the API for DRUO version 9",
-    "version" : "1.0.9",
-    "title" : "DRUO APIS",
+    "title" : "Swagger DRUO APIS",
+    "description" : "This is the API for DRUO",
     "contact" : {
-      "email" : "alejandro.quintero@clouxter.com"
+      "email" : "you@your-company.com"
     },
     "license" : {
       "name" : "DRUO 1.0",
       "url" : "http://www.druo.com"
-    }
+    },
+    "version" : "1.0.0"
   },
+  "servers" : [ {
+    "url" : "http://ec2-18-217-188-187.us-east-2.compute.amazonaws.com:8080/"
+  } ],
   "tags" : [ {
     "name" : "DRUO",
-    "description" : "ed Admin-only calls"
+    "description" : "Secured Admin-only calls"
   } ],
   "paths" : {
+    "/country-settings" : {
+      "put" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Update an existent Country Setting",
+        "description" : "Updates a country setting in the DRUO system",
+        "requestBody" : {
+          "description" : "Country Setting to Update",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CountrySettings"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CountrySettings"
+                }
+              }
+            }
+          },
+          "201" : {
+            "description" : "Updated",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CountrySettings"
+                }
+              }
+            }
+          },
+          "202" : {
+            "description" : "Accepted",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Token not authorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "405" : {
+            "description" : "Method not allowed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "412" : {
+            "description" : "Precondition Failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Request not processed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "PUT",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/country-settings",
+          "responses" : {
+            "200" : {
+              "statusCode" : "200"
+            },
+            "201" : {
+              "statusCode" : "201"
+            },
+            "202" : {
+              "statusCode" : "202"
+            },
+            "400" : {
+              "statusCode" : "400"
+            },
+            "401" : {
+              "statusCode" : "401"
+            },
+            "402" : {
+              "statusCode" : "402"
+            },
+            "403" : {
+              "statusCode" : "403"
+            },
+            "404" : {
+              "statusCode" : "404"
+            },
+            "405" : {
+              "statusCode" : "405"
+            },
+            "409" : {
+              "statusCode" : "409"
+            },
+            "412" : {
+              "statusCode" : "412"
+            },
+            "500" : {
+              "statusCode" : "500"
+            }
+          },
+          "type" : "http"
+        }
+      },
+      "post" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Create a New Country Setting",
+        "description" : "Creates a new country setting in the DRUO system",
+        "requestBody" : {
+          "description" : "Country Setting to add",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CountrySettings"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Country Setting created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CountrySettings"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Token not authorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "405" : {
+            "description" : "Method not allowed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Request not processed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "POST",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/country-settings",
+          "responses" : {
+            "201" : {
+              "statusCode" : "201"
+            },
+            "400" : {
+              "statusCode" : "400"
+            },
+            "401" : {
+              "statusCode" : "401"
+            },
+            "403" : {
+              "statusCode" : "403"
+            },
+            "404" : {
+              "statusCode" : "404"
+            },
+            "405" : {
+              "statusCode" : "405"
+            },
+            "409" : {
+              "statusCode" : "409"
+            },
+            "412" : {
+              "statusCode" : "412"
+            },
+            "500" : {
+              "statusCode" : "500"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/country-settings/locale/{countryCode}" : {
+      "get" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Update an existent Country Setting",
+        "description" : "Updates a country setting in the DRUO system",
+        "parameters" : [ {
+          "name" : "countryCode",
+          "in" : "path",
+          "description" : "Country code of country setting",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Country Setting",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CountrySettings"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Token not authorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "402" : {
+            "description" : "Not Found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "405" : {
+            "description" : "Method not allowed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Request not processed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "GET",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/country-settings/locale/{countryCode}",
+          "requestParameters" : {
+            "integration.request.path.countryCode" : "method.request.path.countryCode"
+          },
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/enums" : {
+      "get" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "This method get the list of enums",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "sortOrder",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "cursor",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }, {
+          "name" : "sortField",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of Enum",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "GET",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/enums",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      },
+      "post" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Create a new Enum in the Druo System",
+        "requestBody" : {
+          "description" : "Creation of a Enum",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestBodyEnum"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Enum Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Enum"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Enum not Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "412" : {
+            "description" : "Pre condition Failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "Not implemented",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "Service Unavailable",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "POST",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/enums",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/enums/{enumIdName}" : {
+      "get" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "This method, allows retrieveEnum",
+        "parameters" : [ {
+          "name" : "enumIdName",
+          "in" : "path",
+          "description" : "The path parameter (name)",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Enum Found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "GET",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/enums/{enumIdName}",
+          "requestParameters" : {
+            "integration.request.path.enumIdName" : "method.request.path.enumIdName"
+          },
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      },
+      "put" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Updates an Enum in the Druo system",
+        "parameters" : [ {
+          "name" : "enumIdName",
+          "in" : "path",
+          "description" : "The enum id to update",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Update a Enum",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestBodyUpdateEnum"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Enum Updated",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Enum"
+                }
+              }
+            }
+          },
+          "202" : {
+            "description" : "Accepted",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Enum Not Updated",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "412" : {
+            "description" : "Pre condition Failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "Not implemented",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "Service Unavailable",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "PUT",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/enums/{enumIdName}",
+          "requestParameters" : {
+            "integration.request.path.enumIdName" : "method.request.path.enumIdName"
+          },
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/idempotency-key" : {
+      "post" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Idempotency Key Service",
+        "description" : "Create Idempotency Key Service",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestBodyIK"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "idempotency Key",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/idempotencyKey"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "POST",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/idempotency-key",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/idempotency-key/{idempotency_key}" : {
+      "get" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Get Itempotency Key",
+        "description" : "Request to retrieve idempotency key",
+        "parameters" : [ {
+          "name" : "idempotency_key",
+          "in" : "path",
+          "description" : "Idempotency key to retrieve",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/idempotencyModel"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "GET",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/idempotency-key/{idempotency_key}",
+          "requestParameters" : {
+            "integration.request.path.idempotency_key" : "method.request.path.idempotency_key"
+          },
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/poc/users" : {
+      "post" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "User Productor Service",
+        "description" : "Create User Productor Service",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestbodyUser"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "idempotencyKey" : [ ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "User Not Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "412" : {
+            "description" : "Pre condition Failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "POST",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/poc/users",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
     "/users" : {
+      "get" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "This method, allows getUser and retrieveUser",
+        "parameters" : [ {
+          "name" : "q",
+          "in" : "query",
+          "description" : "The Query is for a parameter (Email, Phone, Creation Source or id)",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "v",
+          "in" : "query",
+          "description" : "The value of this query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "list of users",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "202" : {
+            "description" : "User Found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://ec2-18-217-188-187.us-east-2.compute.amazonaws.com:8080/users/"
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "GET",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/users",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      },
       "put" : {
         "tags" : [ "DRUO" ],
         "summary" : "Update an User in the Druo system",
@@ -38,6 +1165,16 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "202" : {
+            "description" : "Acepted",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
                 }
               }
             }
@@ -122,87 +1259,1132 @@
               }
             }
           }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "PUT",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/users",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      },
+      "post" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Create a New User",
+        "description" : "Creates a User in the DRUO system.",
+        "requestBody" : {
+          "description" : "User to add",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestbodyUser"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "User created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "User Not Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "412" : {
+            "description" : "Pre condition Failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "Not implemented",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "Service Unavailable",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://ec2-18-217-188-187.us-east-2.compute.amazonaws.com:8080/users/"
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "POST",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/users",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/users/check-duplicate" : {
+      "get" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Validate if an user exist with that Phone number or Email",
+        "parameters" : [ {
+          "name" : "q",
+          "in" : "query",
+          "description" : "The Query is for a parameter (Email or Phone)",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "v",
+          "in" : "query",
+          "description" : "The value of this query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "security" : [ {
+          "test-autorizer" : [ ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Phone number / Email Not Found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "202" : {
+            "description" : "Phone number / Email Found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "Not implemented",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "Service Unavailable",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://ec2-18-217-188-187.us-east-2.compute.amazonaws.com:8082/users/"
+        } ],
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "GET",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/users/check-duplicate",
+          "requestParameters" : {
+            "integration.request.querystring.q" : "method.request.querystring.q",
+            "integration.request.querystring.v" : "method.request.querystring.v"
+          },
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        },
+        "x-amazon-apigateway-authorizer" : {
+          "type" : "token",
+          "authorizerUri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:account-id:function:function-name/invocations",
+          "authorizerCredentials" : "arn:aws:iam::account-id:role",
+          "identityValidationExpression" : "^x-[a-z]+",
+          "authorizerResultTtlInSeconds" : 1200
+        }
+      }
+    },
+    "/users/enroll-auth-user/{auth_id}" : {
+      "post" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Creates an user in AUTH0",
+        "description" : "Creates a User in the DRUO system with AUTH0",
+        "parameters" : [ {
+          "name" : "auth_id",
+          "in" : "path",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "User to add in AUTH0",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestbodyAuthUser"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "User created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "User Not Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "412" : {
+            "description" : "Pre condition Failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "Not implemented",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "Service Unavailable",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "POST",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/users/enroll-auth-user/{auth_id}",
+          "requestParameters" : {
+            "integration.request.path.auth_id" : "method.request.path.auth_id"
+          },
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/users/block-user" : {
+      "put" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Blocks an User in the Druo system",
+        "requestBody" : {
+          "description" : "User Info",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestBodyBlockUser"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "User Blocked",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "202" : {
+            "description" : "Accepted",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "User Not Blocked",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "412" : {
+            "description" : "Pre condition Failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "Not implemented",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "Service Unavailable",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "PUT",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/users/block-user",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/users/unblock-user" : {
+      "put" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Unblock an User in the Druo system",
+        "requestBody" : {
+          "description" : "User Info",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestBodyBlockUser"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "User Unblocked",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "202" : {
+            "description" : "Accepted",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "User Not Blocked",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "412" : {
+            "description" : "Pre condition Failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "Not implemented",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "Service Unavailable",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "PUT",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/users/unblock-user",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/users/reset-password" : {
+      "put" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Reset password for an User in the Druo system",
+        "requestBody" : {
+          "description" : "User info",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestBodyUEP"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "405" : {
+            "description" : "Method not allowed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "412" : {
+            "description" : "Pre condition Failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "Not implemented",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "Service Unavailable",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "PUT",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/users/reset-password",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/users/terminate-user" : {
+      "put" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Terminate User in the Druo system",
+        "requestBody" : {
+          "description" : "User info",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestBodyUE"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "405" : {
+            "description" : "Method not allowed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "412" : {
+            "description" : "Pre condition Failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "Not implemented",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "Service Unavailable",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "PUT",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/users/terminate-user",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
+    "/users/change-password" : {
+      "put" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "Change password for an User in the Druo system",
+        "requestBody" : {
+          "description" : "User info",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestBodyUEP"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Users"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "405" : {
+            "description" : "Method not allowed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "412" : {
+            "description" : "Pre condition Failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "501" : {
+            "description" : "Not implemented",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "503" : {
+            "description" : "Service Unavailable",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "PUT",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/users/change-password",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
         }
       }
     }
   },
   "components" : {
     "schemas" : {
-      "Enum" : {
+      "CountrySettings" : {
+        "required" : [ "countryCode" ],
         "type" : "object",
-        "required" : [ "name", "enumActive", "dateCreated", "dateCreatedGmt" ],
         "properties" : {
-          "enumId" : {
+          "country_settings_id" : {
+            "type" : "string"
+          },
+          "country_code" : {
+            "type" : "string"
+          },
+          "country_code_a3" : {
+            "type" : "string"
+          },
+          "country_code_number" : {
+            "type" : "string"
+          },
+          "phone_code" : {
+            "type" : "string"
+          },
+          "drivers_license_name" : {
+            "type" : "string"
+          },
+          "passport_name" : {
+            "type" : "string"
+          },
+          "national_identity_card_name" : {
+            "type" : "string"
+          },
+          "taxpayer_id_name" : {
+            "type" : "string"
+          },
+          "foreign_taxpayer_id_name" : {
+            "type" : "string"
+          },
+          "foreign_id_name" : {
+            "type" : "string"
+          },
+          "foreign_drivers_license_name" : {
+            "type" : "string"
+          },
+          "locale" : {
+            "$ref" : "#/components/schemas/Locale"
+          },
+          "user_language" : {
+            "type" : "string"
+          },
+          "customer_language" : {
+            "type" : "string"
+          },
+          "hide_decimals" : {
+            "type" : "string"
+          },
+          "scale_factor" : {
+            "type" : "string"
+          },
+          "created_by" : {
+            "type" : "string"
+          },
+          "modified_by" : {
+            "type" : "string"
+          },
+          "date_modified" : {
+            "type" : "string"
+          },
+          "date_modified_gmt" : {
+            "type" : "string"
+          },
+          "date_created" : {
+            "type" : "string"
+          },
+          "date_created_gmt" : {
+            "type" : "string"
+          },
+          "disbursement_methods" : {
+            "type" : "string"
+          },
+          "disbursement_method_times" : {
+            "type" : "string"
+          },
+          "payment_processors" : {
+            "type" : "string"
+          },
+          "payment_methods" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Enum" : {
+        "required" : [ "date_created", "date_createdGmt", "enum_active", "name" ],
+        "type" : "object",
+        "properties" : {
+          "enum_id" : {
             "type" : "string",
-            "description" : "The identifier of the Enum in the system generated automatically from the database",
-            "example" : "3MYCJG5GVYQ8Q"
+            "description" : "The identifier of the Enum in the system generated automatically from the database"
           },
           "name" : {
             "type" : "string",
-            "description" : "Parent enum name",
-            "example" : "BussinessCapabilities"
+            "description" : "Parent enum name"
           },
           "attribute" : {
             "type" : "string",
-            "description" : "The specific attribute to reference within the parent enum.",
-            "example" : "ACCESS"
+            "description" : "The specific attribute to reference within the parent enum."
           },
           "description" : {
             "type" : "string",
-            "description" : "Description",
-            "example" : "A fully operational Business. The Business can use all DRUO products and APIs."
+            "description" : "A fully operational Business. The Business can use all DRUO products and APIs."
           },
-          "additionalValues" : {
+          "additional_values" : {
             "type" : "array",
+            "description" : "Array of values if the Enum Atribut requires it.",
             "items" : {
+              "type" : "object",
               "allOf" : [ {
                 "$ref" : "#/components/schemas/EnumAdditionalValues"
               } ]
-            },
-            "description" : "Array of values if the Enum Atribut requires it."
+            }
           },
-          "enumActive" : {
+          "enum_active" : {
             "type" : "boolean",
-            "description" : "If true, the Enum will be shown as enabled in the system.",
-            "example" : true
+            "description" : "If true, the Enum will be shown as enabled in the system."
           },
-          "createdBy" : {
+          "created_by" : {
             "type" : "string",
-            "description" : "ID of the DRUO Admin User that created the Enum.",
-            "example" : "LHDFOS8E932"
+            "description" : "ID of the DRUO Admin User that created the Enum."
           },
-          "modifiedBy" : {
+          "modified_by" : {
             "type" : "string",
-            "description" : "ID of the DRUO Admin User that modified the Enum.",
-            "example" : "HADSHU34555"
+            "description" : "ID of the DRUO Admin User that modified the Enum."
           },
-          "dateCreated" : {
+          "date_created" : {
             "type" : "string",
-            "format" : "date-time",
             "description" : "The date the Enum was created, in the Location’s timezone. READ-ONLY",
-            "example" : "2018-11-15T23:23:38"
+            "format" : "date-time"
           },
-          "dateCreatedGmt" : {
+          "date_created_gmt" : {
             "type" : "string",
-            "format" : "date-time",
             "description" : "The date the Enum was created, as GMT. READ-ONLY",
-            "example" : "2018-11-15T23:23:38"
+            "format" : "date-time"
           },
-          "dateModified" : {
+          "date_modified" : {
             "type" : "string",
-            "format" : "date-time",
             "description" : "The date the Enum was last modified, in the Location’s timezone. READ-ONLY",
-            "example" : "2018-11-15T23:23:38"
+            "format" : "date-time"
           },
-          "dateModifiedGmt" : {
+          "date_modified_gmt" : {
             "type" : "string",
-            "format" : "date-time",
             "description" : "The date the Enum was last modified, as GMT. READ-ONLY",
-            "example" : "2018-11-15T23:23:38"
+            "format" : "date-time"
           }
         }
       },
       "EnumAdditionalValues" : {
+        "type" : "object",
         "properties" : {
           "value" : {
             "type" : "string",
@@ -212,146 +2394,238 @@
             "type" : "string",
             "description" : "The description of atribute value."
           }
-        },
-        "type" : "object"
+        }
       },
-      "Users" : {
-        "required" : [ "creationSource", "dateCreated", "dateCreatedGmt", "dateModified", "dateModifiedGmt", "status", "userId" ],
+      "Locale" : {
         "type" : "object",
         "properties" : {
-          "userId" : {
+          "language" : {
             "type" : "string",
-            "description" : "The identifier of the Business within the DRUO system.",
-            "example" : "DSF97SDF8D"
+            "description" : "Language tag based on the BCP47 and the IANA Language Subtag Registry http://www.iana.org/assignments/language-subtag-registry"
           },
-          "authId" : {
+          "territory" : {
             "type" : "string",
-            "description" : "The user's ID in a third-party authentication system.",
-            "example" : "usr_5457edea1b8f33391a000004"
+            "description" : "The address's country, in ISO 3166-1-alpha-2 format."
           },
-          "authProvider" : {
+          "calendar_type" : {
+            "type" : "string",
+            "description" : "The type of calendar used. See CalendarType for possible values."
+          },
+          "first_day_week" : {
+            "type" : "string",
+            "description" : "Marks the first day of the week."
+          },
+          "hour_cycle" : {
+            "type" : "string",
+            "description" : "Represents the hour cycle (12 or 24 hours) used."
+          },
+          "temperature" : {
+            "type" : "string",
+            "description" : "Celsius or Fahrenheit"
+          },
+          "date_format_short" : {
+            "type" : "string",
+            "description" : "Short date format according to http://cldr.unicode.org/translation/date-time."
+          },
+          "date_format_medium" : {
+            "type" : "string",
+            "description" : "Medium date format according to http://cldr.unicode.org/translation/date-time."
+          },
+          "date_format_full" : {
+            "type" : "string",
+            "description" : "Full date format according to http://cldr.unicode.org/translation/date-time."
+          },
+          "time_format_mini" : {
+            "type" : "string",
+            "description" : "Time according to 'http://unicode.org/reports/tr35/tr35-dates.html#dfst-hour'"
+          },
+          "time_format_short" : {
+            "type" : "string",
+            "description" : "Short time format according to http://cldr.unicode.org/translation/date-time."
+          },
+          "time_format_medium" : {
+            "type" : "string",
+            "description" : "Medium time format according to http://cldr.unicode.org/translation/date-time."
+          },
+          "time_format_long" : {
+            "type" : "string",
+            "description" : "Long time format according to http://cldr.unicode.org/translation/date-time."
+          },
+          "time_format_full" : {
+            "type" : "string",
+            "description" : "Full time format according to http://cldr.unicode.org/translation/date-time."
+          },
+          "timezone_metazone" : {
+            "type" : "string",
+            "description" : "Represents the timezone metazone. Based on cldr-common-34.0."
+          },
+          "timezone_short_generic" : {
+            "type" : "string",
+            "description" : "Represents the timezone generic. Based on cldr-common-34.0."
+          },
+          "timezone_short_standard" : {
+            "type" : "string",
+            "description" : "Represents the timezone standard. Based on cldr-common-34.0."
+          },
+          "timezone_short_daylight" : {
+            "type" : "string",
+            "description" : "Represents the timezone daylight. Based on cldr-common-34.0."
+          },
+          "number_system" : {
+            "type" : "string",
+            "description" : "Represents the Number Sstem usted. Based on cldr-common-34.0."
+          },
+          "number_format" : {
+            "type" : "string",
+            "description" : "Used for formatting general decimal numbers. The number of decimals will be set by programs that use CLDR, so don't alter them. Typically the only change is to the position of the thousands separator. http://cldr.unicode.org/translation/number-patterns"
+          },
+          "number_decimal" : {
+            "type" : "string",
+            "description" : "The character used for the decimal point for a specific language. System shall use a period \".\" and replace accordingly."
+          },
+          "number_group_separator" : {
+            "type" : "string",
+            "description" : "The \"grouping\" (thousands) separator for a specific language. ystem shall use a comma \",\" and replace accordingly."
+          },
+          "millions_separator" : {
+            "type" : "string",
+            "description" : "An exception override for the millions separator."
+          },
+          "currency" : {
+            "type" : "string"
+          },
+          "currency_format" : {
+            "type" : "string"
+          },
+          "currency_symbol" : {
+            "type" : "string"
+          },
+          "currency_position" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Users" : {
+        "required" : [ "creation_source", "date_created", "date_created_gmt", "date_modified", "date_modified_gmt", "status", "user_id" ],
+        "type" : "object",
+        "properties" : {
+          "user_id" : {
+            "type" : "string",
+            "description" : "The identifier of the Business within the DRUO system."
+          },
+          "auth_id" : {
+            "type" : "string",
+            "description" : "The user's ID in a third-party authentication system."
+          },
+          "auth_provider" : {
             "$ref" : "#/components/schemas/UserAuthProvider"
           },
           "email" : {
             "type" : "string",
-            "description" : "The user's email address.",
-            "example" : "john.smith@druo.com"
+            "description" : "The user's email address."
           },
-          "phoneNumber" : {
+          "phone_number" : {
             "type" : "string",
-            "description" : "The user's phone number.",
-            "example" : "573003002000"
+            "description" : "The user's phone number."
           },
           "password" : {
             "type" : "string",
-            "description" : "The user's password.",
-            "example" : "ABC123"
+            "description" : "The user's password."
           },
           "status" : {
             "$ref" : "#/components/schemas/UserStatus"
           },
-          "businessOwner" : {
+          "business_owner" : {
             "type" : "array",
             "description" : "IDs of the Business that this User is owner of.",
-            "example" : "FHDFP9YSDF0",
             "items" : {
               "type" : "string"
             }
           },
-          "businessEmployee" : {
+          "business_employee" : {
             "type" : "array",
             "description" : "IDs of the Business that this User is an employee of.",
-            "example" : "FJ23F39P23032",
             "items" : {
               "type" : "string"
             }
           },
-          "druoAdmin" : {
+          "druo_admin" : {
             "type" : "string",
-            "description" : "Admin ID of the DRUO Admin.",
-            "example" : "CNO8F39FNO83"
+            "description" : "Admin ID of the DRUO Admin."
           },
-          "personalAccount" : {
+          "personal_account" : {
             "type" : "string",
             "description" : "IDs of the personal account that this User is owner of."
           },
-          "emailVerified" : {
+          "email_verified" : {
             "type" : "boolean",
             "description" : "boolean (optional)true if the user's email is verified, false otherwise. If it is true then the user will not receive a verification email, unless verify_email true was specified"
           },
-          "verifyEmail" : {
+          "verify_email" : {
             "type" : "boolean",
             "description" : "boolean (optional)If true, the user will receive a verification email after creation, even if created with email_verified set to true. If false, the user will not receive a verification email, even if created with email_verified set to false. If unspecified, defaults to the behavior determined by the value of email_verified."
           },
-          "phoneVerified" : {
+          "phone_verified" : {
             "type" : "boolean",
             "description" : "boolean (optional)true if the user's phone number is verified, false otherwise. When the user is added to a SMS connection, they will not receive an verification SMS if this is true."
           },
-          "verifyPhone" : {
+          "verify_phone" : {
             "type" : "boolean",
             "description" : "waiting for DESCRIPTION"
           },
-          "kycLevel" : {
+          "kyc_level" : {
             "type" : "string",
             "description" : "kyc level"
           },
-          "druoScore" : {
+          "druo_score" : {
             "type" : "string",
-            "description" : "Current DRUO Score for the User.",
-            "example" : 55
+            "description" : "Current DRUO Score for the User."
           },
-          "creationSource" : {
+          "creation_source" : {
             "$ref" : "#/components/schemas/UserCreationSource"
           },
-          "dateCreated" : {
+          "date_created" : {
             "type" : "string",
             "description" : "The date the order was created, in the site’s timezone. READ-ONLY",
-            "format" : "date-time",
-            "example" : "2018-11-15T23:23:38"
+            "format" : "date-time"
           },
-          "dateCreatedGmt" : {
+          "date_created_gmt" : {
             "type" : "string",
             "description" : "The date the order was created, as GMT. READ-ONLY",
-            "format" : "date-time",
-            "example" : "2018-11-15T23:23:38"
+            "format" : "date-time"
           },
-          "dateModified" : {
+          "date_modified" : {
             "type" : "string",
             "description" : "The date the order was last modified, in the site’s timezone. READ-ONLY",
-            "format" : "date-time",
-            "example" : "2018-11-15T23:23:38"
+            "format" : "date-time"
           },
-          "dateModifiedGmt" : {
+          "date_modified_gmt" : {
             "type" : "string",
             "description" : "The date the order was last modified, as GMT. READ-ONLY",
-            "format" : "date-time",
-            "example" : "2018-11-15T23:23:38"
+            "format" : "date-time"
           },
-          "modifiedBy" : {
-            "type" : "string",
-            "example" : "ABC"
+          "modified_by" : {
+            "type" : "string"
           }
         }
       },
       "UserAuthProvider" : {
         "type" : "string",
-        "description" : "AUTH0 - ID  1 -  Auth0 service.",
+        "description" : "Auth provider",
         "enum" : [ "AUTH0" ]
       },
       "UserCreationSource" : {
         "type" : "string",
-        "description" : "Represents the method used to create the user profile. \n  * API  - ID 1 -  User created via private DRUO API call. \n  * POS  - ID 2 -  User created via Point of Sale app. \n  * DASHBOARD  - ID 3 -  User created via Dashboard. \n  * IMPORT  - ID 4 -  User profile created automatically when importing User data through Admin Panel.\n  * ADMIN_PANEL  - ID 5  - User profile manually created via DRUO's Admin Panel. \n  * INCOMING_PAYMENT  - ID 6 -  User profile created automatically for an incoming payment. \n  * DELETION_RECOVERY  - ID 7 -  User profile restored through DRUO's deletion recovery process.\n  * THIRD_PARTY  - ID 8  - User profile created by a third party through a DRUO API call.\n  * THIRD_PARTY_IMPORT - ID 9 -  User profile created by a third-party product and imported through an official integration.\n  * MERGE  - ID 10 -  User profile created as the result of explicitly merging multiple User profiles through the Dashboard or Point of Sale application.\n  * UNMERGE_RECOVERY  - ID 11 -  User profile restored through DRUO's unmerge recovery process.\n",
-        "example" : "API",
+        "description" : "Represents the method used to create the user profile.",
         "enum" : [ "API", "POS", "DASHBOARD", "IMPORT", "ADMIN_PANEL", "INCOMING_PAYMENT", "DELETION_RECOVERY", "THIRD_PARTY", "THIRD_PARTY_IMPORT", "MERGE", "UNMERGE_RECOVERY" ]
       },
       "UserStatus" : {
         "type" : "string",
-        "description" : "The User's status. \n  * INVITED  - ID 1  - User has been invited to sign up.  \n  * WAITING_FOR_REVIEW  - ID 2  - A user registered for an account and is waiting for an agent to start the review process. Business may process payments unless user is Owner.  \n  * IN_REVIEW  - ID 3  - An agent is actively reviewing the Business. Business cannot process payments.  \n  * ACTIVE  - ID 4  - A fully operational Business. The Business can use all Square products and APIs. \n  * BLOCKED - ID 5 - The user has been blocked from an excessive amount of incorrectly provided credentials.\n  * INACTIVE  - ID 6 - The Business has not used the account or logged into the platform in the last 6 months. Business can process payments.  \n  * DEACTIVATED  - ID 7  - User-requested deactivation. Data is kept.  \n  * SUSPENDED  - ID 8  - The Business has been temporarily denied service and cannot operate, including logging in and processing payments. Data is kept.  \n  * TERMINATED  - ID 9  - The User has been permanently terminated and cannot operate, including logging in and processing payments. Data is kept.  \n  * DELETED  - ID 10  - Customer has requested data deletion. Personally-identifiable information (name and pictures) have been deleted. The rest of the data is kept.\n",
-        "enum" : [ "INVITED", "WAITING_FOR_REVIEW", "IN_REVIEW", "ACTIVE", "BLOCKED", "INACTIVE", "DEACTIVATED", "SUSPENDED", "TERMINATED", "DELETED" ],
-        "example" : "ACTIVE"
+        "description" : "The User's status",
+        "enum" : [ "INVITED", "WAITING_FOR_REVIEW", "IN_REVIEW", "ACTIVE", "BLOCKED", "INACTIVE", "DEACTIVATED", "SUSPENDED", "TERMINATED", "DELETED" ]
       },
       "requestbodyUser" : {
-        "required" : [ "email", "creationSource", "password" ],
+        "required" : [ "creation_source", "email", "password" ],
         "type" : "object",
         "properties" : {
           "email" : {
@@ -363,7 +2637,7 @@
           "password" : {
             "type" : "string"
           },
-          "creationSource" : {
+          "creation_source" : {
             "type" : "string"
           }
         }
@@ -384,15 +2658,16 @@
         }
       },
       "ErrorCode" : {
+        "required" : [ "code", "message", "method", "path", "response", "status", "timestamp" ],
         "type" : "object",
-        "required" : [ "timestamp", "status", "response", "code", "message", "path", "method" ],
         "properties" : {
           "timestamp" : {
             "type" : "string",
             "format" : "date-time"
           },
           "status" : {
-            "type" : "integer"
+            "type" : "integer",
+            "format" : "int32"
           },
           "response" : {
             "type" : "string"
@@ -423,9 +2698,10 @@
           "description" : {
             "type" : "string"
           },
-          "additionalValues" : {
+          "additional_values" : {
             "type" : "array",
             "items" : {
+              "type" : "object",
               "allOf" : [ {
                 "$ref" : "#/components/schemas/EnumAdditionalValues"
               } ]
@@ -437,8 +2713,8 @@
         }
       },
       "requestBodyUpdateEnum" : {
+        "required" : [ "modified_by" ],
         "type" : "object",
-        "required" : [ "modifiedBy" ],
         "properties" : {
           "name" : {
             "type" : "string",
@@ -452,20 +2728,21 @@
             "type" : "string",
             "description" : "Description"
           },
-          "additionalValues" : {
+          "additional_values" : {
             "type" : "array",
+            "description" : "Array of values if the Enum Atribut requires it.",
             "items" : {
+              "type" : "object",
               "allOf" : [ {
                 "$ref" : "#/components/schemas/EnumAdditionalValues"
               } ]
-            },
-            "description" : "Array of values if num Atribut requires it."
+            }
           },
-          "enumActive" : {
+          "enum_active" : {
             "type" : "boolean",
             "description" : "If true, the Enum will be shown as enabled in the system."
           },
-          "modifiedBy" : {
+          "modified_by" : {
             "type" : "string",
             "description" : "ID of the DRUO Admin User that modified the Enum."
           }
@@ -474,7 +2751,7 @@
       "requestBodyBlockUser" : {
         "type" : "object",
         "properties" : {
-          "userId" : {
+          "user_id" : {
             "type" : "string"
           },
           "email" : {
@@ -485,7 +2762,7 @@
       "requestBodyUEP" : {
         "type" : "object",
         "properties" : {
-          "userId" : {
+          "user_id" : {
             "type" : "string"
           },
           "email" : {
@@ -499,14 +2776,110 @@
       "requestBodyUE" : {
         "type" : "object",
         "properties" : {
-          "userId" : {
+          "user_id" : {
             "type" : "string"
           },
           "email" : {
             "type" : "string"
           }
         }
+      },
+      "idempotencyModel" : {
+        "type" : "object",
+        "properties" : {
+          "idempotency_key_id" : {
+            "type" : "string"
+          },
+          "idempotency_key" : {
+            "type" : "string"
+          },
+          "status" : {
+            "type" : "string"
+          },
+          "action" : {
+            "type" : "string"
+          },
+          "epic" : {
+            "type" : "string"
+          },
+          "http_status_final" : {
+            "type" : "string"
+          },
+          "response" : {
+            "type" : "string"
+          },
+          "date_created" : {
+            "type" : "string"
+          },
+          "date_created_gmt" : {
+            "type" : "string"
+          },
+          "date_open" : {
+            "type" : "string"
+          },
+          "date_open_gmt" : {
+            "type" : "string"
+          },
+          "date_closed" : {
+            "type" : "string"
+          },
+          "date_closed_gmt" : {
+            "type" : "string"
+          }
+        }
+      },
+      "requestBodyIK" : {
+        "required" : [ "action", "epic" ],
+        "type" : "object",
+        "properties" : {
+          "action" : {
+            "type" : "string"
+          },
+          "epic" : {
+            "type" : "string"
+          }
+        }
+      },
+      "idempotencyKey" : {
+        "type" : "object",
+        "properties" : {
+          "idempotency_key" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "bearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer"
+      },
+      "idempotencyKey" : {
+        "type" : "apiKey",
+        "in" : "header",
+        "name" : "X-API-Key"
+      },
+      "test-authorizer" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "x-amazon-apigateway-authtype" : "token",
+        "x-amazon-apigateway-authorizer" : {
+          "type" : "token",
+          "authorizerUri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:buvf2c0fvb:function:test-authorizer/invocations",
+          "authorizerCredentials" : "arn:aws:iam::buvf2c0fvb:role",
+          "identityValidationExpression" : "^Bearer [-0-9a-zA-z\\.]*$",
+          "authorizerResultTtlInSeconds" : 60
+        }
       }
     }
-  }
+  },
+  "security" : [ {
+    "bearerAuth" : [ ]
+  }, {
+    "test-authorizer" : [ ]
+  } ],
+  "x-aws-api-id" : "buvf2c0fvb",
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/DRUO/DRUO_API_CLOUXTER/1.0.0",
+  "schemes" : [ "https" ]
 }
