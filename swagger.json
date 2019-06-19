@@ -1,7 +1,7 @@
 {
-  "swagger" : "2.0",
+  "openapi" : "3.0.0",
   "info" : {
-    "title" : "Swagger DRUO APIS",
+    "title" : "Swagger DRUO API",
     "description" : "This is the API for DRUO",
     "contact" : {
       "email" : "you@your-company.com"
@@ -10,7 +10,7 @@
       "name" : "DRUO 1.0",
       "url" : "http://www.druo.com"
     },
-    "version" : "1.0.0"
+    "version" : "1.0.0-oas3"
   },
   "servers" : [ {
     "url" : "http://ec2-18-217-188-187.us-east-2.compute.amazonaws.com:8080/"
@@ -2878,8 +2878,5 @@
   }, {
     "test-authorizer" : [ ]
   } ],
-  "x-aws-api-id" : "buvf2c0fvb",
-  "host" : "virtserver.swaggerhub.com",
-  "basePath" : "/DRUO/DRUO_API_CLOUXTER/1.0.0",
-  "schemes" : [ "https" ]
+  "x-aws-api-id" : "buvf2c0fvb"
 }
