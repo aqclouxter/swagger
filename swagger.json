@@ -1,7 +1,7 @@
 {
   "openapi" : "3.0.0",
   "info" : {
-    "title" : "Swagger DRUO API",
+    "title" : "Swagger DRUO APIS",
     "description" : "This is the API for DRUO",
     "contact" : {
       "email" : "you@your-company.com"
