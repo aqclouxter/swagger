@@ -961,6 +961,98 @@
         }
       }
     },
+    "/poc/users" : {
+      "post" : {
+        "tags" : [ "DRUO" ],
+        "summary" : "User Productor Service",
+        "description" : "Create User Productor Service",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/requestbodyUser"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "idempotencyKey" : [ ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "409" : {
+            "description" : "User Not Created",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "412" : {
+            "description" : "Pre condition Failed",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorCode"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration" : {
+          "passthroughBehavior" : "when_no_match",
+          "httpMethod" : "POST",
+          "uri" : "http://ec2-18-224-33-237.us-east-2.compute.amazonaws.com/poc/users",
+          "responses" : {
+            "default" : {
+              "statusCode" : "200"
+            }
+          },
+          "type" : "http"
+        }
+      }
+    },
     "/users" : {
       "get" : {
         "tags" : [ "DRUO" ],
